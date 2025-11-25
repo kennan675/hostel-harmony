@@ -11,23 +11,23 @@ interface StatusBadgeProps {
 const statusConfig: Record<Status, { label: string; icon: React.ReactNode; className: string }> = {
   pending: {
     label: "Pending",
-    icon: <Clock className="w-3 h-3" />,
-    className: "bg-muted text-muted-foreground border-border",
+    icon: <Clock className="w-3.5 h-3.5" />,
+    className: "glass border-2 border-muted text-muted-foreground font-bold",
   },
   "in-progress": {
     label: "In Progress",
-    icon: <Loader2 className="w-3 h-3 animate-spin" />,
-    className: "bg-warning/10 text-warning border-warning/30",
+    icon: <Loader2 className="w-3.5 h-3.5 animate-spin" />,
+    className: "glass border-2 border-warning/40 text-warning font-bold shadow-md",
   },
   completed: {
     label: "Completed",
-    icon: <CheckCircle2 className="w-3 h-3" />,
-    className: "bg-success/10 text-success border-success/30",
+    icon: <CheckCircle2 className="w-3.5 h-3.5" />,
+    className: "glass border-2 border-success/40 text-success font-bold shadow-md",
   },
   urgent: {
     label: "Urgent",
-    icon: <AlertCircle className="w-3 h-3" />,
-    className: "bg-urgent/10 text-urgent border-urgent/30 animate-glow-pulse",
+    icon: <AlertCircle className="w-3.5 h-3.5" />,
+    className: "glass border-2 border-urgent/40 text-urgent font-bold shadow-md pulse-glow",
   },
 };
 
@@ -37,7 +37,7 @@ export const StatusBadge = ({ status, className }: StatusBadgeProps) => {
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium border transition-all",
+        "inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs uppercase tracking-wider transition-all hover:scale-105",
         config.className,
         className
       )}
