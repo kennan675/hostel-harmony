@@ -18,7 +18,7 @@ export const Header = () => {
   return (
     <header className="sticky top-4 z-50 mx-4">
       <div className="container">
-        <div className="glass-strong rounded-2xl px-6 h-20 flex items-center justify-between border border-white/50 shadow-lg">
+        <div className="glass-strong rounded-2xl px-6 h-20 flex items-center justify-between border border-white/20 shadow-xl text-white">
           <Link to="/" className="flex items-center gap-3 font-bold text-xl group">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-primary rounded-xl blur-md opacity-50 group-hover:opacity-100 transition-opacity" />
@@ -39,7 +39,7 @@ export const Header = () => {
                 </svg>
               </div>
             </div>
-            <span className="text-2xl font-black tracking-tight text-foreground">
+            <span className="text-2xl font-black tracking-tight text-white">
               Hostel Harmony
             </span>
           </Link>
@@ -50,7 +50,7 @@ export const Header = () => {
               <Link
                 key={item.href}
                 to={item.href}
-                className="text-sm font-bold text-foreground/70 hover:text-foreground transition-colors relative group py-2"
+                className="text-sm font-semibold text-white/80 hover:text-white transition-colors relative group py-2"
               >
                 {item.label}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-primary group-hover:w-full transition-all duration-300" />
@@ -75,7 +75,7 @@ export const Header = () => {
                   <Link
                     key={item.href}
                     to={item.href}
-                    className="text-base font-bold text-foreground/70 hover:text-foreground transition-colors py-2"
+                    className="text-base font-semibold text-white/85 hover:text-white transition-colors py-2"
                   >
                     {item.label}
                   </Link>

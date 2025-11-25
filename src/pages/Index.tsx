@@ -14,70 +14,68 @@ import {
 } from "lucide-react";
 
 const heroPromises = [
-  "Instant acknowledgement within 2 minutes",
-  "Verified updates every step of the fix",
-  "No more chasing caretakers or vendors",
+  "Report hostel issues in under a minute",
+  "Track each ticket from submission to fix",
+  "Get notified the moment work is complete",
 ];
 
 const highlightMetrics = [
-  { label: "Avg. Response", value: "2.3 hrs", detail: "to assign a fixer" },
-  { label: "Vetted Vendors", value: "180+", detail: "covering plumbing to security" },
-  { label: "Resident Satisfaction", value: "97%", detail: "based on 1.4k ratings" },
+  { label: "Weekly requests", value: "120+", detail: "average tickets handled" },
+  { label: "Resolution time", value: "< 24 hrs", detail: "typical non-urgent fix" },
+  { label: "Resident rating", value: "4.8/5", detail: "based on in-app feedback" },
 ];
 
 const featureHighlights = [
   {
     icon: <ShieldCheck className="w-6 h-6" />,
-    title: "Accountability built in",
-    description: "Digital trails, before/after proofs, and approval gates keep every repair honest and on-budget.",
+    title: "Clear responsibilities",
+    description: "Every request shows who is assigned, the deadline, and required approvals.",
   },
   {
     icon: <Clock8 className="w-6 h-6" />,
-    title: "Predictable turnarounds",
-    description: "Smart routing pairs urgent tickets with on-call teams while preventive schedules run in the background.",
+    title: "Live progress",
+    description: "Status chips, timeline updates, and proof photos keep residents in the loop.",
   },
   {
     icon: <MessageSquareHeart className="w-6 h-6" />,
-    title: "Resident delight",
-    description: "Friendly nudges, emojis, and celebrations turn routine fixes into moments of trust with your community.",
+    title: "Resident support",
+    description: "Simple chat replies and quick polls capture how students feel after each fix.",
   },
 ];
 
 const workflowSteps = [
   {
-    title: "Report with receipts",
-    description: "Residents snap, annotate, and submit from mobile or kiosk. AI pre-tags urgency and category instantly.",
+    title: "Report",
+    description: "Students log the issue with photos, location, and urgency from web or kiosk.",
     accent: "from-cyan-400/30 to-blue-500/40",
   },
   {
-    title: "Assign + align",
-    description: "Ops teams drag tickets across smart lanes, auto-notify contractors, and unlock shared budgets in one tap.",
+    title: "Assign",
+    description: "Wardens review, prioritize, and assign the right technician or contractor.",
     accent: "from-blue-500/30 to-indigo-500/40",
   },
   {
-    title: "Fix + prove",
-    description: "Fixers check in on-site, log work, and upload proof packs before payments clear—no more guesswork.",
+    title: "Fix",
+    description: "Teams check in on-site, complete the job, and upload proof of work.",
     accent: "from-indigo-500/30 to-purple-500/40",
   },
   {
-    title: "Celebrate + learn",
-    description: "Residents rate the experience while dashboards learn patterns to prevent repeat headaches.",
+    title: "Close",
+    description: "Residents confirm the result while analytics learn from every ticket.",
     accent: "from-purple-500/30 to-fuchsia-500/40",
   },
 ];
 
 const serviceHighlights = [
   {
-    title: "Command view for wardens",
-    description:
-      "Live maps of every block, energy usage anomalies, and compliance reminders so you stay ahead of audits.",
+    title: "Warden dashboard",
+    description: "Block-level overview, ticket queue, and quick approvals to keep maintenance on schedule.",
     icon: <Building2 className="w-5 h-5" />,
     stats: "34% fewer escalations",
   },
   {
-    title: "Resident-first concierge",
-    description:
-      "Gamified streaks, empathy-filled messaging, and multilingual chat ensure every student feels seen and heard.",
+    title: "Resident portal",
+    description: "Guided request forms, multilingual updates, and simple feedback collection.",
     icon: <Users className="w-5 h-5" />,
     stats: "4.9★ avg feedback",
   },
@@ -99,16 +97,15 @@ const Index = () => {
           <div className="space-y-10">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-white/80">
               <Sparkles className="h-4 w-4" />
-              Delight-first maintenance ops
+              Built for hostel teams
             </span>
 
             <div className="space-y-6">
               <h1 className="text-4xl font-black leading-tight text-white sm:text-5xl lg:text-[3.5rem]">
-                Fix every room, hallway, and story with proof—not promises.
+                Track and resolve hostel maintenance requests without the chaos.
               </h1>
               <p className="text-lg text-white/85 sm:text-xl">
-                Hostel Harmony turns messy request threads into cinematic repair journeys—complete with live status,
-                verified payouts, and cheering residents.
+                Hostel Harmony centralizes resident reports, assignments, and updates so wardens always know what is next.
               </p>
               <div className="space-y-3 text-base text-white/75">
                 {heroPromises.map((promise) => (
@@ -158,8 +155,7 @@ const Index = () => {
               <div className="absolute inset-0 bg-gradient-to-tr from-slate-950/60 via-slate-900/30 to-slate-900/0" />
               <div className="absolute bottom-0 left-0 right-0 space-y-4 p-8">
                 <div className="rounded-3xl border border-white/20 bg-white/15 p-4 text-sm text-white">
-                  “The crew fixed three rooms before lunch and the residents still had time for class. The live thread kept
-                  parents calm, too.”
+                  “We now see every open ticket, who owns it, and the proof image before marking it done.”
                 </div>
                 <div className="grid gap-3 rounded-3xl border border-white/20 bg-white/10 p-4 text-sm text-white/80">
                   <div className="flex items-center justify-between">
@@ -196,10 +192,9 @@ const Index = () => {
         <section className="container space-y-12 px-4">
           <div className="text-center space-y-4">
             <p className="text-xs uppercase tracking-[0.3em] text-white/60">Why campuses switch</p>
-            <h2 className="text-4xl font-black text-white">Harmony in action</h2>
+            <h2 className="text-4xl font-black text-white">Everything needed for upkeep</h2>
             <p className="text-white/70 md:text-lg">
-              Borrowed from the DiaspoCare playbook—glassmorphism, cinematic gradients, and proof-driven UI for every
-              fix.
+              See the essential tools that keep maintenance organized for students, wardens, and service staff.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
@@ -235,9 +230,9 @@ const Index = () => {
         <section className="container space-y-12 px-4">
           <div className="text-center space-y-4">
             <p className="text-xs uppercase tracking-[0.3em] text-white/60">Workflow</p>
-            <h2 className="text-4xl font-black text-white">From issue to applause</h2>
+            <h2 className="text-4xl font-black text-white">Simple four-step flow</h2>
             <p className="text-white/70 md:text-lg">
-              Inspired by DiaspoCare’s cinematic storytelling, every step feels elevated yet practical.
+              A predictable loop keeps requests moving until residents confirm the work.
             </p>
           </div>
           <div className="relative grid gap-8 lg:grid-cols-2">
@@ -262,8 +257,7 @@ const Index = () => {
               <p className="text-xs uppercase tracking-[0.35em] text-white/70">Ready when you are</p>
               <h2 className="text-4xl font-black text-white">Turn maintenance into a signature resident experience.</h2>
               <p className="text-white/80">
-                Borrow the most loved visuals from DiaspoCare’s product team—now retuned for hostels. Let’s make your next
-                inspection jaw-dropping.
+                Spin up a digital maintenance desk for your hostel and keep everyone aligned from report to completion.
               </p>
               <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
                 <Button asChild size="lg" className="h-14 rounded-2xl bg-white/95 px-8 text-base font-bold text-slate-900">
@@ -285,10 +279,7 @@ const Index = () => {
       </main>
 
       <footer className="relative border-t border-white/10 py-12 text-center text-sm text-white/70">
-        <p>
-          © 2024 Hostel Harmony. Visual storytelling meets reliable fixes—crafted with inspiration from DiaspoCare’s design
-          language.
-        </p>
+        <p>© 2024 Hostel Harmony. Hostel maintenance made transparent for teams and residents.</p>
       </footer>
     </div>
   );
