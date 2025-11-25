@@ -6,6 +6,7 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export const Header = () => {
   const navItems = [
@@ -42,6 +43,7 @@ export const Header = () => {
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-primary group-hover:w-full transition-all duration-300" />
               </Link>
             ))}
+            <ThemeToggle />
             <Button className="ml-2 bg-gradient-primary hover:shadow-glow-primary transition-all hover:scale-105 font-bold">
               Get Started
             </Button>
