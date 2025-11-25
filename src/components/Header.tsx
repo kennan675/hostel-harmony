@@ -18,7 +18,7 @@ export const Header = () => {
   return (
     <header className="sticky top-4 z-50 mx-4">
       <div className="container">
-        <div className="glass-strong rounded-2xl px-6 h-20 flex items-center justify-between border border-white/20 shadow-xl text-white">
+        <div className="glass-strong rounded-2xl px-6 h-20 flex items-center justify-between border border-slate-200 bg-white/80 backdrop-blur-xl shadow-xl text-slate-900">
           <Link to="/" className="flex items-center gap-3 font-bold text-xl group">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-primary rounded-xl blur-md opacity-50 group-hover:opacity-100 transition-opacity" />
@@ -39,7 +39,7 @@ export const Header = () => {
                 </svg>
               </div>
             </div>
-            <span className="text-2xl font-black tracking-tight text-white">
+            <span className="text-2xl font-black tracking-tight text-slate-900">
               Hostel Harmony
             </span>
           </Link>
@@ -50,14 +50,14 @@ export const Header = () => {
               <Link
                 key={item.href}
                 to={item.href}
-                className="text-sm font-semibold text-white/80 hover:text-white transition-colors relative group py-2"
+                className="text-sm font-semibold text-slate-600 hover:text-slate-900 transition-colors relative group py-2"
               >
                 {item.label}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-primary group-hover:w-full transition-all duration-300" />
               </Link>
             ))}
             <ThemeToggle />
-            <Button className="ml-2 bg-gradient-primary hover:shadow-glow-primary transition-all hover:scale-105 font-bold">
+            <Button className="ml-2 bg-gradient-primary hover:shadow-glow-primary transition-all hover:scale-105 font-bold text-white">
               Get Started
             </Button>
           </nav>
@@ -69,18 +69,18 @@ export const Header = () => {
                 <Menu className="w-5 h-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-64 glass-strong border-white/50">
+            <SheetContent side="right" className="w-64 glass-strong border-slate-200 bg-white/90 text-slate-900">
               <nav className="flex flex-col gap-4 mt-8">
                 {navItems.map((item) => (
                   <Link
                     key={item.href}
                     to={item.href}
-                    className="text-base font-semibold text-white/85 hover:text-white transition-colors py-2"
+                    className="text-base font-semibold text-slate-600 hover:text-slate-900 transition-colors py-2"
                   >
                     {item.label}
                   </Link>
                 ))}
-                <Button className="mt-4 bg-gradient-primary hover:shadow-glow-primary font-bold">
+                <Button className="mt-4 bg-gradient-primary hover:shadow-glow-primary font-bold text-white">
                   Get Started
                 </Button>
               </nav>
