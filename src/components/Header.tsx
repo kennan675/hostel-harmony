@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, Wrench } from "lucide-react";
+import { Menu } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -22,12 +22,25 @@ export const Header = () => {
           <Link to="/" className="flex items-center gap-3 font-bold text-xl group">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-primary rounded-xl blur-md opacity-50 group-hover:opacity-100 transition-opacity" />
-              <div className="relative p-2.5 rounded-xl bg-gradient-primary text-white shadow-lg group-hover:scale-110 transition-transform">
-                <Wrench className="w-5 h-5" />
+              <div className="relative p-2.5 rounded-xl bg-white shadow-lg group-hover:scale-110 transition-transform">
+                <svg width="28" height="28" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="logo-grad" x1="8" y1="56" x2="56" y2="8" gradientUnits="userSpaceOnUse">
+                      <stop offset="0%" stopColor="#00C6FF" />
+                      <stop offset="50%" stopColor="#5867FF" />
+                      <stop offset="100%" stopColor="#B569FF" />
+                    </linearGradient>
+                  </defs>
+                  <rect x="8" y="12" width="48" height="44" rx="10" fill="url(#logo-grad)" />
+                  <path d="M20 28H44" stroke="white" strokeWidth="4" strokeLinecap="round" />
+                  <path d="M20 40H36" stroke="white" strokeWidth="4" strokeLinecap="round" />
+                  <circle cx="48" cy="40" r="4" fill="white" opacity="0.9" />
+                  <path d="M24 10L32 4L40 10" stroke="url(#logo-grad)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
               </div>
             </div>
-            <span className="gradient-text text-2xl font-black tracking-tight">
-              HostelCare
+            <span className="text-2xl font-black tracking-tight text-foreground">
+              Hostel Harmony
             </span>
           </Link>
 
