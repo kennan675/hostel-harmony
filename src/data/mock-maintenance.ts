@@ -148,8 +148,9 @@ export const mockRooms: HostelRoom[] = [
     status: "occupied",
     lastInspection: "2025-02-10",
     amenities: ["Ensuite", "Study desks", "Closet"],
-    ratePerMonth: "$420",
+    ratePerSemester: "Ksh 68,000",
     thumbnail: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=600&q=80",
+    occupants: ["Kennan Bowen", "Kirop Cheruiyot"],
   },
   {
     id: "RM-318",
@@ -162,8 +163,9 @@ export const mockRooms: HostelRoom[] = [
     status: "available",
     lastInspection: "2025-02-05",
     amenities: ["Balcony", "Smart lock", "Mini fridge"],
-    ratePerMonth: "$520",
+    ratePerSemester: "Ksh 85,000",
     thumbnail: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=600&q=80",
+    occupants: [],
   },
   {
     id: "RM-404",
@@ -176,8 +178,9 @@ export const mockRooms: HostelRoom[] = [
     status: "occupied",
     lastInspection: "2025-01-28",
     amenities: ["Shared lounge", "Lockers", "Air conditioning"],
-    ratePerMonth: "$380",
+    ratePerSemester: "Ksh 55,000",
     thumbnail: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=600&q=80",
+    occupants: ["Wanjiku Mwangi", "Linet Mugo", "Brian Njoroge"],
   },
   {
     id: "RM-112",
@@ -190,7 +193,8 @@ export const mockRooms: HostelRoom[] = [
     status: "maintenance",
     lastInspection: "2025-02-12",
     amenities: ["Garden view", "Shared bath", "Heater"],
-    ratePerMonth: "$360",
+    ratePerSemester: "Ksh 48,000",
+    occupants: ["Akinyi Odhiambo"],
   },
   {
     id: "RM-510",
@@ -203,8 +207,9 @@ export const mockRooms: HostelRoom[] = [
     status: "occupied",
     lastInspection: "2025-01-20",
     amenities: ["Kitchenette", "Private bath", "Smart thermostat"],
-    ratePerMonth: "$650",
+    ratePerSemester: "Ksh 110,000",
     thumbnail: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=600&q=80",
+    occupants: ["Zuri Akello"],
   },
   {
     id: "RM-220",
@@ -217,7 +222,8 @@ export const mockRooms: HostelRoom[] = [
     status: "available",
     lastInspection: "2025-02-03",
     amenities: ["Shared bath", "Storage", "Ceiling fan"],
-    ratePerMonth: "$400",
+    ratePerSemester: "Ksh 60,000",
+    occupants: ["Paul Kariuki"],
   },
 ];
 

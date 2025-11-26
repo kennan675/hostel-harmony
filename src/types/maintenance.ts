@@ -54,8 +54,9 @@ export interface HostelRoom {
   status: RoomStatus;
   lastInspection: string;
   amenities: string[];
-  ratePerMonth?: string;
+  ratePerSemester?: string;
   thumbnail?: string;
+  occupants?: string[];
 }
 
 export interface LeaderboardEntry {

@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { useToast } from "@/hooks/use-toast";
 import { BedDouble, Building2, CheckCircle2, Hammer, Sparkles, Users } from "lucide-react";
 
 const statusFilters: { label: string; value: RoomStatus | "all" }[] = [
@@ -17,12 +18,19 @@ const statusFilters: { label: string; value: RoomStatus | "all" }[] = [
 
 const statusStyles: Record<RoomStatus, string> = {
   available: "bg-emerald-50 text-emerald-700 border-emerald-100",
-  occupied: "bg-slate-100 text-slate-600 border-slate-200",
+  occupied: "bg-rose-50 text-rose-700 border-rose-100",
   maintenance: "bg-amber-50 text-amber-700 border-amber-100",
+};
+
+const statusLabels: Record<RoomStatus, string> = {
+  available: "🟢 Available",
+  occupied: "🔴 Full",
+  maintenance: "🟡 Maintenance",
 };
 
 const Rooms = () => {
   const [activeFilter, setActiveFilter] = useState<RoomStatus | "all">("all");
+  const { toast } = useToast();
 
   const stats = useMemo(() => {
     const totalBeds = mockRooms.reduce((acc, room) => acc + room.capacity, 0);
@@ -43,16 +51,30 @@ const Rooms = () => {
     return mockRooms.filter((room) => room.status === activeFilter);
   }, [activeFilter]);
 
+  const handleBook = (roomName: string) => {
+    toast({
+      title: "Booking successful",
+      description: `${roomName} has been reserved. A confirmation email will follow.`,
+    });
+  };
+
+  const handleViewOccupants = (roomName: string, occupants?: string[]) => {
+    toast({
+      title: `Occupants for ${roomName}`,
+      description: occupants && occupants.length > 0 ? occupants.join(", ") : "No residents assigned yet.",
+    });
+  };
+
   return (
     <ResidentLayout
       heading={
         <div className="flex items-center gap-3">
           <Sparkles className="h-8 w-8 text-cyan-500" />
-          <span>Room availability</span>
+          <span>Rooms overview</span>
         </div>
       }
-      subheading="Browse every block, see current occupancy, and reserve available rooms for new or returning residents."
-      actions={<Button className="rounded-2xl bg-gradient-primary font-bold">Request Allocation</Button>}
+      subheading="Every room combines live occupancy, pricing, and amenities so both students and admins stay transparent."
+      actions={<Button className="rounded-2xl bg-gradient-primary font-bold">Add New Room</Button>}
     >
       <section className="grid gap-6 md:grid-cols-4">
         <Card className="p-6 rounded-3xl border-slate-200">
@@ -118,10 +140,13 @@ const Rooms = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm uppercase tracking-[0.3em] text-slate-500">{room.block}</p>
-                    <h3 className="text-2xl font-semibold text-slate-900">{room.name}</h3>
+                    <h3 className="text-2xl font-semibold text-slate-900">
+                      {room.name}
+                      <span className="text-base font-medium text-slate-500"> • Level {room.level}</span>
+                    </h3>
                   </div>
                   <Badge className={`rounded-full border px-3 py-1 text-xs font-semibold ${statusStyles[room.status]}`}>
-                    {room.status === "maintenance" ? "Maintenance" : room.status === "available" ? "Available" : "Occupied"}
+                    {statusLabels[room.status]}
                   </Badge>
                 </div>
 
@@ -135,7 +160,7 @@ const Rooms = () => {
                     <p className="font-semibold text-slate-900">{room.level}</p>
                   </div>
                   <div>
-                    <p className="text-slate-500">Capacity</p>
+                    <p className="text-slate-500">Occupancy</p>
                     <p className="font-semibold text-slate-900">
                       {room.occupiedBeds}/{room.capacity} beds
                     </p>
@@ -143,6 +168,19 @@ const Rooms = () => {
                   <div>
                     <p className="text-slate-500">Last inspection</p>
                     <p className="font-semibold text-slate-900">{room.lastInspection}</p>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between text-sm text-slate-500">
+                    <span>Transparency counter</span>
+                    <span className="font-semibold text-slate-900">{room.occupiedBeds}/{room.capacity} beds taken</span>
+                  </div>
+                  <div className="h-2 rounded-full bg-slate-100">
+                    <div
+                      className="h-full rounded-full bg-gradient-primary"
+                      style={{ width: `${(room.occupiedBeds / room.capacity) * 100}%` }}
+                    />
                   </div>
                 </div>
 
@@ -159,19 +197,28 @@ const Rooms = () => {
                   </div>
                 </div>
 
-                {room.ratePerMonth && (
+                {room.ratePerSemester && (
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Monthly rate</p>
-                      <p className="text-2xl font-bold text-slate-900">{room.ratePerMonth}</p>
+                      <p className="text-xs uppercase tracking-[0.3em] text-slate-500">Price / semester</p>
+                      <p className="text-2xl font-bold text-slate-900">{room.ratePerSemester}</p>
                     </div>
-                    {room.status === "available" ? (
-                      <Button className="rounded-2xl bg-gradient-primary font-semibold text-white">Reserve</Button>
-                    ) : (
-                      <Button variant="outline" className="rounded-2xl border-slate-200 text-slate-700">
-                        View
+                    <div className="flex gap-2">
+                      <Button
+                        className="rounded-2xl bg-gradient-primary font-semibold text-white"
+                        disabled={room.status !== "available"}
+                        onClick={() => handleBook(room.name)}
+                      >
+                        Book This Room
                       </Button>
-                    )}
+                      <Button
+                        variant="outline"
+                        className="rounded-2xl border-slate-200 text-slate-700"
+                        onClick={() => handleViewOccupants(room.name, room.occupants)}
+                      >
+                        View Occupants
+                      </Button>
+                    </div>
                   </div>
                 )}
 
@@ -186,6 +233,19 @@ const Rooms = () => {
                   <div className="flex items-center gap-2 rounded-2xl border border-emerald-100 bg-emerald-50 p-3 text-sm text-emerald-700">
                     <CheckCircle2 className="h-4 w-4" />
                     Ready for inspection and check-in.
+                  </div>
+                )}
+
+                {room.occupants && room.occupants.length > 0 && (
+                  <div className="space-y-2 text-sm">
+                    <p className="text-slate-500">Current occupants</p>
+                    <div className="flex flex-wrap gap-2">
+                      {room.occupants.map((resident) => (
+                        <Badge key={resident} variant="secondary" className="rounded-full bg-slate-100 text-slate-700">
+                          {resident}
+                        </Badge>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
