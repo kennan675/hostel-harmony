@@ -13,12 +13,12 @@ export const Loader = ({ onComplete }: LoaderProps) => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(timer);
-          setTimeout(onComplete, 500);
+          setTimeout(onComplete, 1200);
           return 100;
         }
-        return prev + 2;
+        return prev + 1;
       });
-    }, 40);
+    }, 60);
 
     return () => clearInterval(timer);
   }, [onComplete]);
@@ -84,7 +84,7 @@ export const Loader = ({ onComplete }: LoaderProps) => {
                 animate={{ scale: [1, 1.1, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
-                HC
+                HH
               </motion.span>
             </div>
           </motion.div>
@@ -142,7 +142,7 @@ export const Loader = ({ onComplete }: LoaderProps) => {
               />
             </div>
             <div className="flex items-center justify-between text-sm">
-              <span className="text-muted-foreground font-medium">Loading HostelCare</span>
+              <span className="text-muted-foreground font-medium">Loading Hostel Harmony</span>
               <span className="font-mono font-bold text-primary">{progress}%</span>
             </div>
           </motion.div>

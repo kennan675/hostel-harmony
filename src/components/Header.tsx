@@ -57,8 +57,8 @@ export const Header = () => {
               </Link>
             ))}
             <ThemeToggle />
-            <Button className="ml-2 bg-gradient-primary hover:shadow-glow-primary transition-all hover:scale-105 font-bold text-white">
-              Get Started
+            <Button asChild className="ml-2 bg-gradient-primary hover:shadow-glow-primary transition-all hover:scale-105 font-bold text-white">
+              <Link to="/admin">Admin Login</Link>
             </Button>
           </nav>
 
@@ -80,8 +80,8 @@ export const Header = () => {
                     {item.label}
                   </Link>
                 ))}
-                <Button className="mt-4 bg-gradient-primary hover:shadow-glow-primary font-bold text-white">
-                  Get Started
+                <Button asChild className="mt-4 bg-gradient-primary hover:shadow-glow-primary font-bold text-white">
+                  <Link to="/admin">Admin Login</Link>
                 </Button>
               </nav>
             </SheetContent>
