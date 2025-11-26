@@ -22,7 +22,6 @@ const heroPromises = [
 const highlightMetrics = [
   { label: "Weekly requests", value: "120+", detail: "average tickets handled" },
   { label: "Resolution time", value: "< 24 hrs", detail: "typical non-urgent fix" },
-  { label: "Resident rating", value: "4.8/5", detail: "based on in-app feedback" },
 ];
 
 const featureHighlights = [
@@ -124,7 +123,7 @@ const Index = () => {
                   <ArrowRight className="h-4 w-4" />
                 </a>
               </Button>
-              <Button asChild variant="outline" size="lg" className="h-14 rounded-2xl border-white/30 px-8 text-base font-bold text-white">
+              <Button asChild size="lg" className="h-14 rounded-2xl bg-success hover:bg-success/90 px-8 text-base font-bold text-white">
                 <a href="/dashboard" className="flex items-center gap-2">
                   Explore Dashboard
                   <ArrowRight className="h-4 w-4" />
@@ -176,7 +175,7 @@ const Index = () => {
         {/* METRICS */}
         <section className="container px-4">
           <div className="rounded-[32px] border border-slate-200 bg-white p-8 shadow-xl shadow-slate-200/60">
-            <div className="grid gap-6 md:grid-cols-3">
+            <div className="grid gap-6 md:grid-cols-2">
               {highlightMetrics.map((metric) => (
                 <div key={metric.label} className="space-y-2 border-slate-100 md:border-l md:pl-8 first:md:border-0 first:md:pl-0">
                   <p className="text-xs uppercase tracking-[0.3em] text-slate-500">{metric.label}</p>
@@ -266,9 +265,9 @@ const Index = () => {
                     <ArrowRight className="h-4 w-4" />
                   </a>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="h-14 rounded-2xl border-slate-200 px-8 text-base font-bold text-slate-900">
-                  <a href="/dashboard" className="flex items-center gap-2">
-                    See Resident View
+                <Button asChild size="lg" className="h-14 rounded-2xl bg-success hover:bg-success/90 px-8 text-base font-bold text-white">
+                  <a href="/admin" className="flex items-center gap-2">
+                    Admin Login
                     <ArrowRight className="h-4 w-4" />
                   </a>
                 </Button>
