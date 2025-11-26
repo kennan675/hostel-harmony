@@ -3,7 +3,7 @@ import { Header } from "@/components/Header";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 interface ResidentLayoutProps {
-  heading?: string;
+  heading?: ReactNode;
   subheading?: string;
   actions?: ReactNode;
   children: ReactNode;
