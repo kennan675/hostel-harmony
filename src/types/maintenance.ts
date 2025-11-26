@@ -41,6 +41,23 @@ export interface DashboardStats {
   contributionScore: number;
 }
 
+export type RoomStatus = "available" | "occupied" | "maintenance";
+
+export interface HostelRoom {
+  id: string;
+  name: string;
+  block: string;
+  level: number;
+  type: string;
+  capacity: number;
+  occupiedBeds: number;
+  status: RoomStatus;
+  lastInspection: string;
+  amenities: string[];
+  ratePerMonth?: string;
+  thumbnail?: string;
+}
+
 export interface LeaderboardEntry {
   id: string;
   name: string;

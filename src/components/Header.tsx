@@ -12,6 +12,7 @@ export const Header = () => {
   const navItems = [
     { label: "Home", href: "/" },
     { label: "Dashboard", href: "/dashboard" },
+    { label: "Rooms", href: "/rooms" },
     { label: "Submit Request", href: "/submit" },
   ];
 
