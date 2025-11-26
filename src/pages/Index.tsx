@@ -278,7 +278,7 @@ const Index = () => {
       </main>
 
       <footer className="relative border-t border-slate-200 py-12 text-center text-sm text-slate-500">
-        <p>© 2024 Hostel Harmony. Hostel maintenance made transparent for teams and residents.</p>
+        <p>© 2025 Hostel Harmony. Hostel maintenance made transparent for teams and residents.</p>
       </footer>
     </div>
   );
