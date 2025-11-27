@@ -2,7 +2,6 @@ import { AdminLayout } from "@/layouts/AdminLayout";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { StatusBadge } from "@/components/StatusBadge";
@@ -52,10 +51,18 @@ const priorityStyles: Record<PriorityLevel, string> = {
 
 const splitPalette = mockIssueSplit.map((segment) => segment.color);
 
+const getInitials = (name: string) =>
+  name
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((chunk) => chunk.charAt(0).toUpperCase())
+    .join("");
+
 const AdminDashboard = () => {
   return (
     <AdminLayout>
-      <section className="grid gap-4 lg:grid-cols-4">
+      <section id="overview" className="grid gap-4 lg:grid-cols-4">
         {[
           {
             label: "Open Tickets",
@@ -95,7 +102,7 @@ const AdminDashboard = () => {
         ))}
       </section>
 
-      <section className="grid gap-6 xl:grid-cols-3">
+      <section id="trend-section" className="grid gap-6 xl:grid-cols-3">
         <Card className="p-6 glass border-2 border-white/30 rounded-[2.5rem]">
           <div className="flex items-center justify-between mb-6">
             <div>
@@ -155,7 +162,7 @@ const AdminDashboard = () => {
           </div>
         </Card>
 
-        <Card className="p-6 glass border-2 border-white/30 rounded-[2.5rem] space-y-4">
+        <Card id="ops-squad" className="p-6 glass border-2 border-white/30 rounded-[2.5rem] space-y-4">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground font-semibold">Team Load</p>
@@ -169,10 +176,9 @@ const AdminDashboard = () => {
           <div className="space-y-4">
             {mockStaffLoad.map((staff) => (
               <div key={staff.id} className="flex items-center gap-3 rounded-2xl border border-white/20 p-3">
-                <Avatar className="h-12 w-12 border-2 border-white/40">
-                  <AvatarImage src={staff.avatar} />
-                  <AvatarFallback>{staff.name.slice(0, 2)}</AvatarFallback>
-                </Avatar>
+                <div className="h-12 w-12 rounded-full bg-gradient-primary/80 text-white font-bold flex items-center justify-center">
+                  {getInitials(staff.name)}
+                </div>
                 <div className="flex-1">
                   <p className="font-semibold">{staff.name}</p>
                   <p className="text-xs text-muted-foreground">Focus: {staff.focusArea}</p>
@@ -187,7 +193,7 @@ const AdminDashboard = () => {
       </section>
 
       <section className="grid gap-6 xl:grid-cols-2">
-        <Card className="p-6 glass border-2 border-white/30 rounded-[2.5rem]">
+        <Card id="live-queue" className="p-6 glass border-2 border-white/30 rounded-[2.5rem]">
           <div className="flex items-center justify-between mb-4">
             <div>
               <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground font-semibold">Tickets</p>
@@ -282,7 +288,7 @@ const AdminDashboard = () => {
       </section>
 
       <section className="grid gap-6 lg:grid-cols-3">
-        <Card className="p-6 glass border-2 border-white/30 rounded-[2.5rem]">
+        <Card id="signals" className="p-6 glass border-2 border-white/30 rounded-[2.5rem]">
           <div className="flex items-center justify-between mb-4">
             <div>
               <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground font-semibold">Signals</p>

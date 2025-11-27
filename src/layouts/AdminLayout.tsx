@@ -1,5 +1,5 @@
-import type { ReactNode } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useState, type ReactNode } from "react";
+import { Link } from "react-router-dom";
 import {
   Sidebar,
   SidebarContent,
@@ -19,22 +19,30 @@ import {
 } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Bell, LayoutGrid, ListTodo, PieChart, Settings, Sparkles, Users } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 const adminNav = [
-  { label: "Overview", href: "/admin", icon: LayoutGrid },
-  { label: "Requests", href: "/admin/requests", icon: ListTodo },
-  { label: "Analytics", href: "/admin/analytics", icon: PieChart },
-  { label: "Residents", href: "/admin/residents", icon: Users },
-  { label: "Settings", href: "/admin/settings", icon: Settings },
+  { label: "Overview", target: "overview", icon: LayoutGrid },
+  { label: "Requests", target: "live-queue", icon: ListTodo },
+  { label: "Analytics", target: "trend-section", icon: PieChart },
+  { label: "Team Load", target: "ops-squad", icon: Users },
+  { label: "Notifications", target: "signals", icon: Settings },
 ];
 
 export const AdminLayout = ({ children }: { children: ReactNode }) => {
-  const location = useLocation();
+  const [activeTarget, setActiveTarget] = useState<string>(adminNav[0].target);
+
+  const handleNavClick = (target: string) => {
+    setActiveTarget(target);
+    const el = document.getElementById(target);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
     <SidebarProvider>
       <Sidebar collapsible="icon" className="bg-card/80 backdrop-blur-lg border-r border-white/20">
@@ -57,12 +65,16 @@ export const AdminLayout = ({ children }: { children: ReactNode }) => {
             <SidebarGroupContent>
               <SidebarMenu>
                 {adminNav.map((item) => (
-                  <SidebarMenuItem key={item.href}>
-                    <SidebarMenuButton asChild isActive={location.pathname === item.href} className="font-semibold">
-                      <Link to={item.href} className="flex items-center gap-3">
+                  <SidebarMenuItem key={item.target}>
+                    <SidebarMenuButton
+                      asChild
+                      isActive={activeTarget === item.target}
+                      className="font-semibold"
+                    >
+                      <button type="button" className="flex items-center gap-3" onClick={() => handleNavClick(item.target)}>
                         <item.icon className="w-4 h-4" />
                         <span>{item.label}</span>
-                      </Link>
+                      </button>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
@@ -72,10 +84,9 @@ export const AdminLayout = ({ children }: { children: ReactNode }) => {
         </SidebarContent>
         <SidebarFooter className="border-t border-white/10">
           <div className="flex items-center gap-3 rounded-2xl p-3 bg-muted/30">
-            <Avatar className="h-10 w-10 border-2 border-white/50">
-              <AvatarImage src="https://images.unsplash.com/photo-1544723795-4325379f3157" />
-              <AvatarFallback>AL</AvatarFallback>
-            </Avatar>
+            <div className="h-10 w-10 rounded-full bg-gradient-primary text-white font-bold flex items-center justify-center">
+              AL
+            </div>
             <div>
               <p className="text-sm font-semibold">Amina Lawson</p>
               <p className="text-xs text-muted-foreground">Operations Lead</p>
