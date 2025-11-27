@@ -12,7 +12,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Sparkles, Search, Filter, Flame, ArrowUpRight, Bell } from "lucide-react";
 import { Link } from "react-router-dom";
 import {
@@ -25,6 +24,14 @@ import {
 const requestFilters = ["All", "Pending", "In Progress", "Completed", "Urgent"];
 
 const Dashboard = () => {
+  const getInitials = (name: string) =>
+    name
+      .split(" ")
+      .filter(Boolean)
+      .slice(0, 2)
+      .map((chunk) => chunk.charAt(0).toUpperCase())
+      .join("");
+
   return (
     <ResidentLayout
       heading={
@@ -183,25 +190,27 @@ const Dashboard = () => {
               <Badge variant="outline">Leaderboard</Badge>
             </div>
             <div className="space-y-4">
-              {mockLeaderboard.map((entry, index) => (
-                <div key={entry.id} className="flex items-center gap-4">
-                  <Badge variant="outline" className="rounded-full h-8 w-8 flex items-center justify-center font-bold">
-                    {index + 1}
-                  </Badge>
-                  <Avatar className="h-10 w-10">
-                    <AvatarImage src={entry.avatar} />
-                    <AvatarFallback>{entry.name.slice(0, 2)}</AvatarFallback>
-                  </Avatar>
-                  <div className="flex-1">
-                    <p className="font-semibold">{entry.name}</p>
-                    <p className="text-xs text-muted-foreground">{entry.badges.join(" • ")}</p>
+              {mockLeaderboard.map((entry, index) => {
+                const initials = getInitials(entry.name);
+                return (
+                  <div key={entry.id} className="flex items-center gap-4">
+                    <Badge variant="outline" className="rounded-full h-8 w-8 flex items-center justify-center font-bold">
+                      {index + 1}
+                    </Badge>
+                    <div className="h-10 w-10 rounded-full bg-gradient-primary text-white font-bold flex items-center justify-center">
+                      {initials}
+                    </div>
+                    <div className="flex-1">
+                      <p className="font-semibold">{entry.name}</p>
+                      <p className="text-xs text-muted-foreground">{entry.badges.join(" • ")}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="font-mono font-bold text-lg">{entry.points} pts</p>
+                      <p className="text-xs text-muted-foreground">{entry.streak} streak 🔥</p>
+                    </div>
                   </div>
-                  <div className="text-right">
-                    <p className="font-mono font-bold text-lg">{entry.points} pts</p>
-                    <p className="text-xs text-muted-foreground">{entry.streak} streak 🔥</p>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </Card>
           <Card className="p-6 glass border-2 border-white/40 rounded-[2.5rem] space-y-4">
