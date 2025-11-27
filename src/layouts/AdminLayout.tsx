@@ -52,7 +52,7 @@ export const AdminLayout = ({ children }: { children: ReactNode }) => {
               <Sparkles className="w-5 h-5" />
             </div>
             <div>
-              <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">HostelCare</p>
+              <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">Hostel Harmony</p>
               <p className="text-xl font-black tracking-tight">Admin</p>
             </div>
           </Link>
